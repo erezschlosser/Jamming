@@ -1,0 +1,100 @@
+/* Container for the playlist */
+.playlist-container {
+    margin: 20px auto;
+    padding: 15px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title for the playlist */
+  .playlist-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  /* List of tracks */
+  .track-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Each track item */
+  .track-item {
+    padding: 10px 15px;
+    margin: 8px 0;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #555;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect for track items */
+  .track-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .remove-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-button:hover {
+    background-color: #c0392b;
+  }  
+
+  .input {
+    background: none; /* Transparent background */
+    border: none; /* Remove border */
+    font-size: 2rem; /* Adjust to match a title style */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    color: inherit; /* Use the text color of the container */
+  
+    /* Transition for smooth focus/unfocus effect */
+    transition: background-color 0.2s ease, border-bottom 0.2s ease;
+  }
+  
+  .input:focus {
+    background-color: white; /* Makes it clear when editing */
+    border-bottom: 2px solid black; /* Adds an underline to emphasize editing */
+    outline: none; /* Removes default focus outline */
+    color: black; /* Ensures readability while editing */
+  }
+  
+  .input::placeholder {
+    color: gray; /* Fades placeholder text */
+  }
+  
+  .input:not(:focus) {
+    background: none; /* Ensures blending */
+    border-bottom: none; /* Removes underline when not editing */
+    pointer-events: auto; /* Allow interaction */
+    cursor: pointer; /* Adds a pointer cursor to hint it's clickable */
+  }
+  
+  .input:not(:focus):hover {
+    text-decoration: underline; /* Adds a hover effect to indicate interactivity */
+  }
+  
+  
