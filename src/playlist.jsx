@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./playlist.css";
 
 export default function MyPlaylist({ playlist, onRemove }) {
@@ -10,21 +10,21 @@ export default function MyPlaylist({ playlist, onRemove }) {
   };
 
   return (
-    <>
-      <div className="playlist-container">
-        <h2>
-          <input
-            type="text"
-            value={playlistName}
-            onChange={handlePlaylistName}
-            placeholder="Enter playlist name"
-            className="input"
-          />
-        </h2>
-        <ul className="track-list">
-          {playlist.map((track) => (
+    <div className="playlist-container">
+      <h2>
+        <input
+          type="text"
+          value={playlistName}
+          onChange={handlePlaylistName}
+          placeholder="Enter playlist name"
+          className="input"
+        />
+      </h2>
+      <ul className="track-list">
+        {playlist.length > 0 ? (
+          playlist.map((track) => (
             <li key={track.id} className="track-item">
-              {track.name} - {track.artist} ({track.album})
+              {track.title} - {track.channel}
               <button
                 onClick={() => onRemove(track.id)}
                 className="remove-button"
@@ -32,9 +32,22 @@ export default function MyPlaylist({ playlist, onRemove }) {
                 Remove
               </button>
             </li>
-          ))}
-        </ul>
-      </div>
-    </>
+          ))
+        ) : (
+          <p>Your playlist is empty. Add some videos!</p>
+        )}
+      </ul>
+    </div>
   );
 }
+
+MyPlaylist.propTypes = {
+  playlist: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      channel: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onRemove: PropTypes.func.isRequired,
+};

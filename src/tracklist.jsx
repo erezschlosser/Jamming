@@ -1,26 +1,34 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./TrackList.css";
 
-const tracks = [
-  { id: "12345", name: "Yellow", artist: "Coldplay", album: "Parachutes", uri: 'spotify:track:6K4t31amVTZDgR3sKmwUJJ'},
-  { id: "98765", name: "Hey Jude", artist: "The Beatles", album: "B", uri: 'spotify:track:3n3Ppam7vgaVa1iaRUc9Lp'},
-  { id: "33333", name: "Stan", artist: "Eminem", album: "M", uri: 'spotify:track:1jJci4qxiYcOHhQR247rEU'},
-  { id: "88888", name: "Alejandro", artist: "Lady Gaga", album: "Fame", uri: 'spotify:track:4aWmUDTfIPGksMNLV2rQP2'},
-];
-
-export default function TrackList({ onAdd }) {
+export default function TrackList({ tracks, onAdd }) {
   return (
-    <div className="track-list">
-      {tracks.map((track) => (
-        <div key={track.id} className="track-item">
-          <div className="track-name">{track.name}</div>
-          <div className="track-artist">{track.artist}</div>
-          <div className="track-album">{track.album}</div>
-          <button onClick={() => onAdd(track)}>Add to Playlist</button>
-        </div>
-      ))}
+    <div>
+      {tracks.length > 0 ? (
+        tracks.map((track) => (
+          <div key={track.id} className="track-item">
+            <h3>{track.title}</h3>
+            <p>Channel: {track.channel}</p>
+            <button onClick={() => onAdd(track)}>Add to Playlist</button>
+          </div>
+        ))
+      ) : (
+        <p>No tracks found. Try searching for videos!</p>
+      )}
     </div>
   );
 }
+
+TrackList.propTypes = {
+  tracks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      channel: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onAdd: PropTypes.func.isRequired,
+};
 
 
